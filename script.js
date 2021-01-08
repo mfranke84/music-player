@@ -50,7 +50,6 @@ function playSong(){
 function pauseSong(){
     isPlaying = false;
     playBtn.classList.replace('fa-pause','fa-play');
-    // playBtn.title = 'Play';
     playBtn.setAttribute('title','Play');
     music.pause();
 }
@@ -130,7 +129,18 @@ function updateProgressBar(e){
     }
 }
 
+// Set progress bar
+function setProgressBar(e){
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    const {duration} = music;
+    music.currentTime = clickX/width * duration;
+   
+}
+
 // Event listeners
 prevBtn.addEventListener('click',prevSong);
 nextBtn.addEventListener('click',nextSong);
 music.addEventListener('timeupdate',updateProgressBar);
+music.addEventListener('ended',nextSong);
+progressContainer.addEventListener('click',setProgressBar);

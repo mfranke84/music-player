@@ -10,6 +10,11 @@ const progressContainer = document.getElementById('progress-container');
 const progress = document.getElementById('progress');
 const currentTimeEL = document.getElementById('current-time');
 const durationEL = document.getElementById('duration');
+const volume = document.getElementById('volume-container');
+const volumeBar = document.getElementById('volume');
+const volumeLvl = document.getElementById('volume-level');
+const volumeBall = document.getElementById('volume-ball');
+let volumePercent = 1;
 
 // Music
 const songs = [
@@ -32,7 +37,6 @@ const songs = [
         artist:'Metric/Jacinto Design',
     }
 ];
-
 
 // Check if playing
 let isPlaying = false;
@@ -61,6 +65,9 @@ playBtn.addEventListener('click', () => (isPlaying ? pauseSong(): playSong()));
 function loadSong(song){
     title.textContent = song.displayName;
     artist.textContent = song.artist;
+    volumePercent = Math.floor(music.volume*100);
+    volumeBar.style.width = `${volumePercent}%`;
+    volumeLvl.textContent = `${volumePercent}%`;
     music.src = `music/${song.name}.mp3`;
     image.src = `img/${song.name}.jpg`; 
 }
@@ -69,13 +76,14 @@ function loadSong(song){
 let songIndex = 0;
 
 // Previous song
-function prevSong(){
+function prevSong(e){
     songIndex--;
     if (songIndex < 0){
         songIndex = songs.length-1;
     }
     
     loadSong(songs[songIndex]);
+    
     playSong();
 }
 
@@ -88,8 +96,6 @@ function nextSong(){
 
     loadSong(songs[songIndex]);
     playSong();
-     
-
 }
 
 // On load - Select first song
@@ -138,9 +144,31 @@ function setProgressBar(e){
    
 }
 
+// Set volume
+function setVolume(e){
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    music.volume = clickX/width;
+}
+
+// Update volume bar
+function updateVolumeBar(e){
+    volumePercent = Math.floor(e.srcElement.volume*100);
+    volumeBar.style.width = `${volumePercent}%`;
+    volumeLvl.textContent = `${volumePercent}%`;
+    volumeBall.style.marginLeft = `${volumePercent}%`;
+}
+
+// Write volume to volume wrapper
+function showVolumeLevel(){
+
+}
+
 // Event listeners
 prevBtn.addEventListener('click',prevSong);
 nextBtn.addEventListener('click',nextSong);
 music.addEventListener('timeupdate',updateProgressBar);
 music.addEventListener('ended',nextSong);
+music.addEventListener('volumechange',updateVolumeBar)
 progressContainer.addEventListener('click',setProgressBar);
+volume.addEventListener('click',setVolume);

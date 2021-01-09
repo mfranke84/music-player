@@ -110,32 +110,44 @@ h3 {
 
 /* Volume */
 .volume-container {
-  background: rgb(212, 212, 212);
+  background: rgb(221, 220, 220);
   border-radius: 5px;
   cursor: pointer;
-  margin: 40px 40px;
-  height: 6px;
-  width: 50%;
-  align-items: center;
+  margin: 40px 20px;
+  height: 8px;
+  width: 30%;
+  margin-left: 35%;
+  right: 100px;
 }
 
 .volume {
-  background: #b34141;
+  background: #aa4b4b;
   border-radius: 5px;
   height: 100%;
   width: 0%;
   transition: width 0.1s linear;
 }
 
-.volume:hover{
-  transform: scaleX();
+.volume-ball{
+  width: 14px;
+  height: 14px;
+  background: rgb(129, 129, 129);
+  border-radius: 50%;
+  transform: translateX(-5px);
+  margin-top: -11px;
+  margin-left: 100%;
 }
 
 .volume-wrapper {
   position: relative;
-  top: -25px;
+  top: -35px;
   display: flex;
   justify-content: space-between;
+  color: rgb(129, 129, 129);
+}
+
+.volume-wrapper i{
+  font-size: 16px;
 }
 
 /* Media Query: iPhone (Vertical) */
@@ -160,4 +172,5 @@ h3 {
     top: -10px;
     left: 100px;
   }
+
 }

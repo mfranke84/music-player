@@ -19,9 +19,10 @@ body {
 .player-container{
   height: 600px;
   width: 400px;
-  background-color: #f7fcfc;
+  background-color: #3a5858;
   border-radius: 20px;
   box-shadow: 0 15px 30px 5px rgba(0,0,0,0.3);
+  color: #fff;
 }
 
 .img-container {
@@ -89,7 +90,7 @@ h3 {
 
 .fas {
   font-size: 30px;
-  color: rgb(129, 129, 129);
+  color: rgb(221, 221, 221);
   margin-right: 30px;
   cursor: pointer;
   user-select: none;
@@ -131,7 +132,7 @@ h3 {
 .volume-ball{
   width: 14px;
   height: 14px;
-  background: rgb(129, 129, 129);
+  background: rgb(255, 255, 255);
   border-radius: 50%;
   transform: translateX(-5px);
   margin-top: -11px;
@@ -143,7 +144,7 @@ h3 {
   top: -35px;
   display: flex;
   justify-content: space-between;
-  color: rgb(129, 129, 129);
+  color: rgb(221, 221, 221);
 }
 
 .volume-wrapper i{
